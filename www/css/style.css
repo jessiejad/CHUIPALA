@@ -1,1 +1,16 @@
 /* Empty. Add your own CSS if you like */
+
+.profil{
+	margin-top:20px;
+	width:100px;
+	height:100px;
+	border-radius: 50%;
+}
+
+.titrePage{
+    margin-top:40px;
+}
+
+.contenuPage{
+    margin-top: 40px;
+}
