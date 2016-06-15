@@ -1,0 +1,31 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Ajouter un retard</h1>
+        <button class="button button-clear button-primary" ng-click="modal.hide()"><i class="ion-android-close"></i></button>
+    </ion-header-bar>
+    <ion-content class="padding">
+
+        <form ng-submit="">
+
+            <!--div class="list">
+
+                <label class="item item-input">
+                    <span class="input-label"></span>
+                    <input placeholder="Métro, réveil, ect." type="text" name="motif" ng-model="data.motif" required>
+                </label>
+
+            </div-->
+            <ion-list>
+                <div class="item" ion-datetime-picker ng-model="datetimeValue">
+                    {{datetimeValue| date: "yyyy-mm-dd H:mm:ss"}}
+                </div>
+            </ion-list>
+
+            <button  style="height:10%;" class="button button-full button-positive" type="submit">
+                Ajouter
+            </button>
+
+        </form>
+
+    </ion-content>
+</ion-modal-view>
