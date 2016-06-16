@@ -57,6 +57,24 @@ appChuipala.controller('HomeCtrl', function($scope, apiFactory, CONSTANT_USER, $
     }
 })
 
+appChuipala.filter('searchContacts', function(){
+  return function (items, query) {
+    var filtered = [];
+    var letterMatch = new RegExp(query, 'i');
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+      if (query) {
+        if (letterMatch.test(item.StudentFullName)) {
+          filtered.push(item);
+        }
+      } else {
+        filtered.push(item);
+      }
+    }
+    return filtered;
+  };
+});
+
 appChuipala.controller('AbsencesCtrl', function($scope, apiFactory, CONSTANT_USER) {
     
 })

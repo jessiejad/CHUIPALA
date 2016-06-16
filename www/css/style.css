@@ -252,3 +252,9 @@ input::-webkit-input-placeholder{
 .no-errors {
   border-bottom: 3px solid green;
 }
+
+.searchBar .searchTxt {
+  left: 13%;
+  width: calc(100% - 26%);
+  position: fixed;
+}
