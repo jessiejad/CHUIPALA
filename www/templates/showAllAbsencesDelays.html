@@ -13,7 +13,7 @@
             <span class="item-note" style="color:white" ng-bind="(absences | searchContacts:search).length"></span>
       		</div>
       		<ion-item class="item-text-wrap" ng-repeat="absence in absences | searchContacts:search">
-          		<p>{{absence.StudentFullName}}</p>
+          		<p>{{absence.PersonFullName}}</p>
           		<p>Motif : {{absence.Reason}}</p>
       		</ion-item>
       		<div class="item item-divider" style="background-color: #ffc900; color: white;">
@@ -21,7 +21,7 @@
             <span class="item-note" style="color:white" ng-bind="(delays | searchContacts:search).length"></span>
       		</div>
         	<ion-item class="item-text-wrap" ng-repeat="delay in delays | searchContacts:search">
-          		<p>{{delay.StudentFullName}}</p>
+          		<p>{{delay.PersonFullName}}</p>
           		<p>Motif : {{delay.Reason}}</p>
           		<span class="badge badge-energized">{{delay.Value}}{{delay.ValueUnit}}</span>
       		</ion-item>

@@ -64,7 +64,7 @@ appChuipala.filter('searchContacts', function(){
     for (var i = 0; i < items.length; i++) {
       var item = items[i];
       if (query) {
-        if (letterMatch.test(item.StudentFullName)) {
+        if (letterMatch.test(item.PersonFullName)) {
           filtered.push(item);
         }
       } else {

@@ -1,0 +1,23 @@
+<ion-view title="Mes Absences">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-ios-plus" ng-click="showModal('templates/newAbsences.html')">
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-list ng-repeat="shop in shops">
+      <div class="item item-divider item-icon-right" on-hold="onMessageHold(shop)">
+        {{shop.name}}
+        <i class="icon icon ion-ios-plus" ng-click="add(shop.$id, shop.name)"></i>
+      </div>
+      <ion-item class="item-text-wrap" ng-repeat="(id, item) in shop.myListOfProducts">
+          <p>{{item.labelProduct}}</p>
+        <ion-option-button side="right" class="button button-energized" ng-click="modifyProducts(shop, id, item.labelProduct)">
+          Modifier
+        </ion-option-button>
+        <ion-option-button side="right" class="button button-assertive" ng-click="trashProducts(shop.$id, id)">
+          Supprimer
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
