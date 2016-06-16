@@ -30,11 +30,14 @@
                 </ion-list>
             </div>
             <div class="item-text-wrap" ng-if="IsUserProfessor">
-                <div class="row">
-                    <div class="col col-50" style="text-align: center">
-                        <a class="subdued" ui-sref="app.absences({ idClass : class.ClassID })">1 Absence</a>
+                <div class="row" >
+                    <div class="col col-33" style="text-align: center">
+                        <a class="subdued">1 Absence</a>
                     </div>
-                    <div class="col col-50" style="text-align: center">
+                    <div class="col col-33" style="text-align: center" ng-click="showModalComplex('templates/showAllAbsencesDelays.html', class.ClassID)">
+                        <i class="icon ion-ios-eye"></i>
+                    </div>
+                    <div class="col col-33" style="text-align: center">
                         <a href="#" class="subdued">3 Retards</a>
                     </div>
                 </div>

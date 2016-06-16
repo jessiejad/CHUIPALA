@@ -77,11 +77,11 @@ appChuipala.config(function($stateProvider, $urlRouterProvider, $translateProvid
               }
           },
       })
-      .state('app.absences', {
-          url: "/absences/:idClass",
+      .state('app.showAllAbsencesDelays', {
+          url: "/showAllAbsencesDelays/:idClass",
           views: {
               'menuContent': {
-                  templateUrl: "templates/absences.html",
+                  templateUrl: "templates/showAllAbsencesDelays.html",
                   controller: "AbsencesCtrl"
               }
           },
