@@ -75,6 +75,14 @@ appChuipala.filter('searchContacts', function(){
   };
 });
 
-appChuipala.controller('AbsencesCtrl', function($scope, apiFactory, CONSTANT_USER) {
-    
+appChuipala.controller('MyAbsencesCtrl', function($scope, apiFactory, CONSTANT_USER) {
+    apiFactory.getMyAbsences().then(function (result) {
+        $scope.absences = result.data;
+    })
+})
+
+appChuipala.controller('MyDelaysCtrl', function($scope, apiFactory, CONSTANT_USER) {
+    apiFactory.getMyDelays().then(function (result) {
+        $scope.delays = result.data;
+    })
 })
