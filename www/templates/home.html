@@ -20,10 +20,10 @@
                             <p style="color: #ffc900" ng-if="(IsUserProfessor) && class.IsProfessorLate">Vous avez signalé être en retard à ce cours</p>
 
                         </div>
-                            <ion-option-button side="right" class="button button-energized" ng-click="showModal('templates/delays.html')">
+                            <ion-option-button side="right" class="button button-energized" ng-click="showModal('templates/newDelays.html')">
                                 <i class="icon ion-ios-alarm-outline"></i>
                             </ion-option-button>
-                            <ion-option-button side="right" class="button button-assertive">
+                            <ion-option-button side="right" class="button button-assertive" ng-click="showModal('templates/newAbsences.html')">
                                 <i class="icon ion-ios-calendar-outline"></i>
                             </ion-option-button>
                     </ion-item>

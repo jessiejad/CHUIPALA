@@ -26,6 +26,14 @@ appChuipala.controller('HomeCtrl', function($scope, apiFactory, CONSTANT_USER, $
     }
 
     $scope.title = "Veuillez choisir une date et une heure";
+
+    $scope.addDelays = function(date, motif){
+        //À compléter
+    }
+
+    $scope.addAbsences = function(dateDeb, dateFin, motif){
+        //À Compléter
+    }
 })
 
 appChuipala.controller('AbsencesCtrl', function($scope, apiFactory, CONSTANT_USER) {
