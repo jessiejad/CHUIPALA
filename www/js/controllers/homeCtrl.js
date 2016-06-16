@@ -26,15 +26,17 @@ appChuipala.controller('HomeCtrl', function($scope, apiFactory, CONSTANT_USER, $
     }
 
     $scope.showModalComplex = function(templateUrl, idParam){
-        apiFactory.getClassEvents(idParam).then(function (result){
-            console.log(result);
-            $scope.absences = result.data.Absences;
-            $scope.delays = result.data.Delays;
-        })
         $ionicModal.fromTemplateUrl(templateUrl, {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function(modal) {
+            apiFactory.getClassEvents(idParam).then(function (result){
+                console.log(result);
+                $scope.absences = result.data.Absences;
+                $scope.delays = result.data.Delays;
+                $scope.countAbsences = result.data.NbAbsences;
+                $scope.countDelays = result.data.NbDelays;
+            })
             $scope.modal = modal;
             $scope.modal.show();
         });

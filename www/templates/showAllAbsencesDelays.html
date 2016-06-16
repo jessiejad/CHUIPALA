@@ -10,42 +10,24 @@
         <button class="button button-clear button-primary" ng-click="modal.hide()"><i class="ion-android-close"></i></button>
     </ion-header-bar>
     <ion-content>
-
-       <!-- 	    <ion-list ng-repeat="shop in shops">
-	      <div class="item item-divider item-icon-right" on-hold="onMessageHold(shop)">
-	        {{shop.name}}
-	        <i class="icon icon ion-ios-plus" ng-click="add(shop.$id, shop.name)"></i>
-	      </div>
-	      <ion-item class="item-text-wrap" ng-repeat="(id, item) in shop.myListOfProducts">
-	          <p>{{item.labelProduct}}</p>
-	        <ion-option-button side="right" class="button button-energized" ng-click="modifyProducts(shop, id, item.labelProduct)">
-	          Modifier
-	        </ion-option-button>
-	        <ion-option-button side="right" class="button button-assertive" ng-click="trashProducts(shop.$id, id)">
-	          Supprimer
-	        </ion-option-button>
-	      </ion-item>
-	    </ion-list> -->
-
 		<ion-list>
-	      <div class="item item-divider" style="background-color: #ef473a; color: white;">
-	        Absences
-	      </div>
-	      <ion-item class="item-text-wrap">
-	          <p>Rémi Boissise</p>
-	          <p>Motif : Travail trop</p>
-	      </ion-item>
-	      <div class="item item-divider" style="background-color: #ffc900; color: white;">
-	        Retards
-	       </div>
-	        <ion-item class="item-text-wrap">
-	          <p>Rémi Boissise</p>
-	          <p>Motif : Travail trop</p>
-	          <span class="badge badge-energized">0h</span>
-	      	</ion-item>
-	      </div>
-
-	    </ion-list>
-
+      		<div class="item item-divider" style="background-color: #ef473a; color: white;">
+        		Absences 
+        		<span class="item-note" style="color:white">{{countAbsences}}</span> 
+      		</div>
+      		<ion-item class="item-text-wrap" ng-repeat="absence in absences">
+          		<p>{{absence.StudentFullName}}</p>
+          		<p>Motif : {{absence.Reason}}</p>
+      		</ion-item>
+      		<div class="item item-divider" style="background-color: #ffc900; color: white;">
+        		Retards 
+        		<span class="item-note" style="color:white">{{countDelays}}</span> 
+      		</div>
+        	<ion-item class="item-text-wrap" ng-repeat="delay in delays">
+          		<p>{{delay.StudentFullName}}</p>
+          		<p>Motif : {{delay.Reason}}</p>
+          		<span class="badge badge-energized">{{delay.Value}}{{delay.ValueUnit}}</span>
+      		</ion-item>
+    	</ion-list>
     </ion-content>
 </ion-modal-view>
