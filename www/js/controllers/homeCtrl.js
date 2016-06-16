@@ -75,13 +75,24 @@ appChuipala.filter('searchContacts', function(){
   };
 });
 
-appChuipala.controller('MyAbsencesCtrl', function($scope, apiFactory, CONSTANT_USER) {
+appChuipala.controller('MyAbsencesCtrl', function($scope, apiFactory, CONSTANT_USER, $ionicModal) {
+    
     apiFactory.getMyAbsences().then(function (result) {
         $scope.absences = result.data;
     })
+
+    $scope.showModal = function(templateUrl) {
+        $ionicModal.fromTemplateUrl(templateUrl, {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+            $scope.modal.show();
+        });
+    }
 })
 
-appChuipala.controller('MyDelaysCtrl', function($scope, apiFactory, CONSTANT_USER) {
+appChuipala.controller('MyDelaysCtrl', function($scope, apiFactory, CONSTANT_USER, $ionicModal) {
     apiFactory.getMyDelays().then(function (result) {
         $scope.delays = result.data;
     })

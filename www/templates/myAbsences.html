@@ -4,19 +4,22 @@
     </button>
   </ion-nav-buttons>
   <ion-content>
-    <ion-list ng-repeat="shop in shops">
-      <div class="item item-divider item-icon-right" on-hold="onMessageHold(shop)">
-        {{shop.name}}
-        <i class="icon icon ion-ios-plus" ng-click="add(shop.$id, shop.name)"></i>
-      </div>
-      <ion-item class="item-text-wrap" ng-repeat="(id, item) in shop.myListOfProducts">
-          <p>{{item.labelProduct}}</p>
-        <ion-option-button side="right" class="button button-energized" ng-click="modifyProducts(shop, id, item.labelProduct)">
-          Modifier
-        </ion-option-button>
-        <ion-option-button side="right" class="button button-assertive" ng-click="trashProducts(shop.$id, id)">
-          Supprimer
-        </ion-option-button>
+    <ion-list>
+      <ion-item class="item-text-wrap" ng-repeat="absence in absences">
+          <div class="row">
+            <h2 style="text-align:center;">{{absence.Reason}}</h2>
+          </div>
+          <div class="item-text-wrap">
+                <div class="row" >
+                    <div class="col col-50" style="text-align: left">
+                      <a class="subdued">De {{absence.StartDate}}</a>
+                    </div>
+                    <div class="col col-50" style="text-align: right">
+                      <a class="subdued">À {{absence.StopDate}}</a>
+                    </div>
+                </div>
+            </div>
+
       </ion-item>
     </ion-list>
   </ion-content>
