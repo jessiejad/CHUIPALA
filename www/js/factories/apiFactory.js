@@ -7,7 +7,7 @@ appChuipala.factory('apiFactory', function($http) {
         getDaysClasses: function () {
             return  $http({
                  method: 'GET',
-                 url: 'http://chuipala-ws.azurewebsites.net/api/NextClasses',
+                 url: 'http://chuipala-ws.azurewebsites.net/api/DaysClasses',
                  headers: {
                     'Content-Type': 'application/json',
                     //'Authorization': "Bearer " + CONSTANT_USER.token
@@ -15,6 +15,18 @@ appChuipala.factory('apiFactory', function($http) {
                 //data: ,
                 //auth data: "grant_type=password&username="+CONSTANT_USER.username+"&password="+CONSTANT_USER.password
              })
+        },
+        getClassEvents: function (id) {
+            return  $http({
+                method: 'GET',
+                url: 'http://chuipala-ws.azurewebsites.net/api/ClassEvents/' + id,
+                headers: {
+                    'Content-Type': 'application/json',
+                    //'Authorization': "Bearer " + CONSTANT_USER.token
+                },
+                //data: ,
+                //auth data: "grant_type=password&username="+CONSTANT_USER.username+"&password="+CONSTANT_USER.password
+            })
         }
     }
 });

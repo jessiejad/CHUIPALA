@@ -26,6 +26,11 @@ appChuipala.controller('HomeCtrl', function($scope, apiFactory, CONSTANT_USER, $
     }
 
     $scope.showModalComplex = function(templateUrl, idParam){
+        apiFactory.getClassEvents(idParam).then(function (result){
+            console.log(result);
+            $scope.absences = result.data.Absences;
+            $scope.delays = result.data.Delays;
+        })
         $ionicModal.fromTemplateUrl(templateUrl, {
             scope: $scope,
             animation: 'slide-in-up'
