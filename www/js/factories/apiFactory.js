@@ -95,7 +95,7 @@ appChuipala.factory('apiFactory', function($http) {
         createDelay: function (arrival, reason) {
             return  $http({
                 method: 'POST',
-                url: 'http://chuipala-ws.azurewebsites.net/api/FullDelaysInfo',
+                url: 'http://chuipala-ws.azurewebsites.net/api/NewDelay',
                 headers: {
                     'Content-Type': 'application/json',
                     //'Authorization': "Bearer " + CONSTANT_USER.token
