@@ -100,6 +100,6 @@ appChuipala.controller('MyDelaysCtrl', function($scope, apiFactory, CONSTANT_USE
 
 appChuipala.controller('AbsenceCtrl', function($scope, apiFactory, $stateParams) {
     apiFactory.getAbsenceInfo($stateParams.id).then(function(result) {
-        console.log(result);
+        $scope.absenceCours = result.data;
     })
 });

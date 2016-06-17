@@ -1,0 +1,52 @@
+<ion-view title="Mon absence">
+    <ion-nav-bar class="bar-assertive" align-title="center">
+        <ion-nav-back-button class="button-clear">
+            <i class="ion-arrow-left-c"></i> Retour
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="list card">
+            <div class="item" style="background-color:#ef473a">
+                <h2 style="font-size:130%; text-align:center; color:white">{{absenceCours.Reason}}</h2>
+                <div class="item-text-wrap row">
+                    <div class="col col-50" style="text-align: left; font-size:80%">
+                        <span style="color:white" class="subdued">Du {{absenceCours.StartDate}}</span>
+                    </div>
+                    <div class="col col-50" style="text-align: right; font-size:80%">
+                        <span style="color:white" class="subdued">Au {{absenceCours.StopDate}}</span>
+                    </div>
+                </div>
+                <div class="item-text-wrap row">
+                    <div class="col col-50" style="text-align: left; font-size:80%">
+                        <span style="color:white" class="subdued">À {{absenceCours.StartTime}}</span>
+                    </div>
+                    <div class="col col-50" style="text-align: right; font-size:80%">
+                        <span style="color:white" class="subdued">À {{absenceCours.StopTime}}</span>
+                    </div>
+                </div>
+            </div>
+        
+            <ion-item class="item-text-wrap" ng-repeat="absence in absenceCours.ConcernedClasses">
+                <h2 style="font-size:110%; text-align:center;">{{absence.SubjectLabel}}</h2>
+                <h4 class="subdued" style="text-align:center;">{{absence.ProfessorFullName}}</h4>
+
+                <div class="item-text-wrap row">
+                    <div class="col col-50" style="text-align: left; font-size:80%">
+                        <span class="subdued">Du {{absence.StartDate}}</span>
+                    </div>
+                    <div class="col col-50" style="text-align: right; font-size:80%">
+                        <span class="subdued">Au {{absence.EndDate}}</span>
+                    </div>
+                </div>
+                <div class="item-text-wrap row">
+                    <div class="col col-50" style="text-align: left; font-size:80%">
+                        <span class="subdued">À {{absence.StartTime}}</span>
+                    </div>
+                    <div class="col col-50" style="text-align: right; font-size:80%">
+                        <span class="subdued">À {{absence.EndTime}}</span>
+                    </div>
+                </div>
+            </ion-item>
+        </div>
+    </ion-content>
+</ion-view>
