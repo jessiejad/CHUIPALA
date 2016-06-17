@@ -76,7 +76,7 @@ appChuipala.filter('searchContacts', function(){
 });
 
 appChuipala.controller('MyAbsencesCtrl', function($scope, apiFactory, CONSTANT_USER, $ionicModal) {
-    
+    console.log("in MyAbsences");
     apiFactory.getMyAbsences().then(function (result) {
         $scope.absences = result.data;
     })
@@ -97,3 +97,9 @@ appChuipala.controller('MyDelaysCtrl', function($scope, apiFactory, CONSTANT_USE
         $scope.delays = result.data;
     })
 })
+
+appChuipala.controller('AbsenceCtrl', function($scope, apiFactory, $stateParams) {
+    apiFactory.getAbsenceInfo($stateParams.id).then(function(result) {
+        console.log(result);
+    })
+});
