@@ -48,6 +48,7 @@ appChuipala.controller('HomeCtrl', function($scope, apiFactory, CONSTANT_USER, $
         apiFactory.createDelay(date, motif);
         $scope.modal.hide();
         $scope.modal.remove();
+        //$state.go($state.current, {}, {reload: true});
     }
 
     $scope.addAbsences = function(dateDeb, dateFin, motif){
