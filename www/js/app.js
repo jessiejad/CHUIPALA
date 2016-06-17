@@ -97,16 +97,6 @@ appChuipala.config(function($stateProvider, $urlRouterProvider, $translateProvid
           },
       })
 
-    .state('app.absence', {
-        url: "/absence/:id",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/absence.html",
-                controller: "AbsenceCtrl"
-            }
-        },
-    })
-
   // Default route
   $urlRouterProvider.otherwise('/app/home');
 });
