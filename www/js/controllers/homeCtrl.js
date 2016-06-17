@@ -45,7 +45,7 @@ appChuipala.controller('HomeCtrl', function($scope, apiFactory, CONSTANT_USER, $
     $scope.title = "Veuillez choisir une date et une heure";
 
     $scope.addDelays = function(date, motif){
-        //À compléter
+        apiFactory.createDelay(date, motif);
         $scope.modal.hide();
         $scope.modal.remove();
     }

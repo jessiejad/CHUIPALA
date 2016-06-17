@@ -32,17 +32,17 @@
             <div class="item-text-wrap" ng-if="IsUserProfessor">
                 <div class="row" >
                     <div class="col col-33" style="text-align: center">
-                        <a class="subdued" ng-if="class.NbAbsences > 1">{{class.NbAbsences}} Absences</a>
-                        <a class="subdued" ng-if="class.NbAbsences == 1">{{class.NbAbsences}} Absence</a>
-                        <a class="subdued" ng-if="class.NbAbsences == 0">Pas d'absent</a>
+                        <a style="color:#ef473a" class="subdued" ng-if="class.NbAbsences > 1">{{class.NbAbsences}} Absences</a>
+                        <a style="color:#ef473a" class="subdued" ng-if="class.NbAbsences == 1">{{class.NbAbsences}} Absence</a>
+                        <a style="color:#ef473a" class="subdued" ng-if="class.NbAbsences == 0">Pas d'absent</a>
                     </div>
                     <div class="col col-33" style="text-align: center" ng-click="showModalComplex('templates/showAllAbsencesDelays.html', class.ClassID)">
                         <i class="icon ion-ios-eye"></i>
                     </div>
                     <div class="col col-33" style="text-align: center">
-                        <a class="subdued" ng-if="class.NbDelays > 1">{{class.NbDelays}} Retards</a>
-                        <a class="subdued" ng-if="class.NbDelays == 1">{{class.NbDelays}} Retard</a>
-                        <a class="subdued" ng-if="class.NbDelays == 0">Pas de retard</a>
+                        <a style="color:#ffc900" class="subdued" ng-if="class.NbDelays > 1">{{class.NbDelays}} Retards</a>
+                        <a style="color:#ffc900" class="subdued" ng-if="class.NbDelays == 1">{{class.NbDelays}} Retard</a>
+                        <a style="color:#ffc900" class="subdued" ng-if="class.NbDelays == 0">Pas de retard</a>
                     </div>
                 </div>
             </div>
