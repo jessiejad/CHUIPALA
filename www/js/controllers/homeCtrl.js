@@ -96,6 +96,16 @@ appChuipala.controller('MyDelaysCtrl', function($scope, apiFactory, CONSTANT_USE
     apiFactory.getMyDelays().then(function (result) {
         $scope.delays = result.data;
     })
+
+    $scope.showModal = function(templateUrl) {
+        $ionicModal.fromTemplateUrl(templateUrl, {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+            $scope.modal.show();
+        });
+    }
 })
 
 appChuipala.controller('AbsenceCtrl', function($scope, apiFactory, $stateParams) {

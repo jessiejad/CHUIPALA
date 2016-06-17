@@ -96,6 +96,17 @@ appChuipala.config(function($stateProvider, $urlRouterProvider, $translateProvid
               }
           },
       })
+
+      .state('app.myDelays', {
+          url: "/myDelays",
+          views: {
+              'menuContent': {
+                  templateUrl: "templates/myDelays.html",
+                  controller: "MyDelaysCtrl"
+              }
+          },
+      })
+
       .state('app.absence', {
           url: "/absence/:id",
           views: {
