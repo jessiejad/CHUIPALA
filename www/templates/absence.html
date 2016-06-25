@@ -28,7 +28,13 @@
         
             <ion-item class="item-text-wrap" ng-repeat="absence in absenceCours.ConcernedClasses">
                 <h2 style="font-size:110%; text-align:center;">{{absence.SubjectLabel}}</h2>
-                <h4 class="subdued" style="text-align:center;">{{absence.ProfessorFullName}}</h4>
+                <h4 ng-if="!isProfessor" class="subdued" style="text-align:center;">{{absence.ProfessorFullName}}</h4>
+                <h4 ng-if="isProfessor" class="subdued" style="text-align:center;">
+                    <span ng-repeat="group in absence.Groups">
+                        {{group}} -
+                    </span>
+
+                </h4>
 
                 <div class="item-text-wrap row">
                     <div class="col col-50" style="text-align: left; font-size:80%">

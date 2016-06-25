@@ -17,8 +17,25 @@ appChuipala.value('V_LANGUAGE',{
   language : "fr"
 });
 
+appChuipala.value('LANGUAGES', [
+    {
+        reference : 'fr',
+        label : 'Français'
+    },
+    {
+        reference : 'en',
+        label : 'English'
+    }
+]);
+
 appChuipala.value('CONSTANT_USER',{
-    isProfessor : true,
+    username : null,
+    password : null,
+    token : null,
+    name : null,
+    firstname : null,
+    isProfessor : null,
+    isConnected : false
 });
 
 // .run is executed at the application launch
@@ -45,7 +62,6 @@ var translations = {
       Home_Title : "My classes",
       Home_SubTitle : "Today",
   }
-
 }
 
 // Routing
@@ -68,6 +84,16 @@ appChuipala.config(function($stateProvider, $urlRouterProvider, $translateProvid
           controller: 'LanguageCtrl'
       })
 
+      .state('app.login', {
+          url: "/login",
+          views: {
+              'menuContent': {
+                  templateUrl: "templates/login.html",
+                  controller: "LoginCtrl"
+              }
+          }
+      })
+
       .state('app.home', {
           url: "/home",
           views: {
@@ -77,6 +103,7 @@ appChuipala.config(function($stateProvider, $urlRouterProvider, $translateProvid
               }
           },
       })
+
       .state('app.showAllAbsencesDelays', {
           url: "/showAllAbsencesDelays/:idClass",
           views: {
@@ -114,6 +141,26 @@ appChuipala.config(function($stateProvider, $urlRouterProvider, $translateProvid
                 templateUrl: "templates/absence.html",
                 controller: "AbsenceCtrl"
             }
+          },
+      })
+
+      .state('app.delay', {
+          url: "/delay/:id",
+          views: {
+              'menuContent': {
+                  templateUrl: "templates/delay.html",
+                  controller: "DelayCtrl"
+              }
+          },
+      })
+
+      .state('app.settings', {
+          url: "/settings",
+          views: {
+              'menuContent': {
+                  templateUrl: "templates/settings.html",
+                  controller: "SettingsCtrl"
+              }
           },
       })
     

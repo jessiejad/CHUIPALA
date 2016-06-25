@@ -1,6 +1,5 @@
 <ion-view title="{{ 'Home_SubTitle' | translate }}" class="bodyColor scroll" hide-back-button="true" cache-view="false">
     <ion-content has-header="true" scroll="true" style="position: fixed;">
-
         <div class="card" ng-repeat="class in classes">
             <div class="item item-divider" style="text-align: center">
                 {{class.StartTime.split(' ')[0]}} - {{class.EndTime.split(' ')[0]}}
@@ -14,16 +13,16 @@
                                 {{class.ProfessorFullName}}
                                 <span style="color: #33cd5f" ng-if="!(class.IsProfessorAbsent) && !(class.IsProfessorLate)"> à l'heure</span>
                                 <span style="color: #ef473a" ng-if="class.IsProfessorAbsent"> absent</span>
-                                <span style="color: #ffc900" ng-if="class.IsProfessorLate"> en retard</span>
+                                <span style="color: #ffc900" ng-if="!(class.IsProfessorAbsent) && class.IsProfessorLate"> en retard</span>
                             </p>
                             <p style="color: #ef473a" ng-if="(IsUserProfessor) && class.IsProfessorAbsent">Vous avez signalé être absent à ce cours</p>
                             <p style="color: #ffc900" ng-if="(IsUserProfessor) && class.IsProfessorLate">Vous avez signalé être en retard à ce cours</p>
 
                         </div>
-                            <ion-option-button side="right" class="button button-energized" ng-click="showModal('templates/newDelays.html')">
+                            <ion-option-button side="right" class="button button-energized" ng-click="showModalDelay('templates/newDelays.html', class.PreSetDelayDate)">
                                 <i class="icon ion-ios-alarm-outline"></i>
                             </ion-option-button>
-                            <ion-option-button side="right" class="button button-assertive" ng-click="showModal('templates/newAbsences.html')">
+                            <ion-option-button side="right" class="button button-assertive" ng-click="showModalAbsence('templates/newAbsences.html', class.FullStartDate, class.FullEndDate)">
                                 <i class="icon ion-ios-calendar-outline"></i>
                             </ion-option-button>
                     </ion-item>

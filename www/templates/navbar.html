@@ -9,26 +9,30 @@
                 </button>
             </ion-nav-buttons>
 
-            <ion-nav-buttons side="right">
+            <!--ion-nav-buttons side="right">
                 <button class="button" ng-click="ChangeLanguage('fr')">
                     <i class="flag-icon flag-icon-fr"></i>
                 </button>
                 <button class="button" ng-click="ChangeLanguage('en')">
                     <i class="flag-icon flag-icon-gb"></i>
                 </button>
-            </ion-nav-buttons>
+            </ion-nav-buttons-->
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
 
     <ion-side-menu side="left">
         <ion-header-bar class="bar-stable">
-            <h1 class="title">Raul Mazo, professeur</h1>
+            <h1 class="title">
+                {{userFullName}},
+                <span ng-if="isProfessor">professeur</span>
+                <span ng-if="!isProfessor">étudiant(e)</span>
+            </h1>
 
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item menu-close ng-click="app.home">
+                <ion-item menu-close ui-sref="app.home">
                     Mes cours
                 </ion-item>
                 <ion-item menu-close ui-sref="app.myAbsences">
@@ -37,10 +41,10 @@
                 <ion-item menu-close ui-sref="app.myDelays">
                     Mes retards
                 </ion-item>
-                <ion-item menu-close href="#/app/browse">
+                <ion-item menu-close ng-click="logout()">
                     Déconnexion
                 </ion-item>
-                <ion-item menu-close href="#/app/playlists">
+                <ion-item menu-close ui-sref="app.settings">
                     Paramètres
                 </ion-item>
             </ion-list>
