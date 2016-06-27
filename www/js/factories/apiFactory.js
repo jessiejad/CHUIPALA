@@ -78,6 +78,17 @@ appChuipala.factory('apiFactory', function($http, CONSTANT_USER) {
                 //data:
             })
         },
+        getMyGroups: function () {
+            return  $http({
+                method: 'GET',
+                url: host + '/api/UserGroups',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': "Bearer " + CONSTANT_USER.token
+                },
+                //data:
+            })
+        },
         getAbsenceInfo: function (id) {
             return  $http({
                 method: 'GET',
@@ -100,6 +111,17 @@ appChuipala.factory('apiFactory', function($http, CONSTANT_USER) {
                  //data:
              })
          },
+        getGroupInfo: function (id) {
+            return  $http({
+                method: 'GET',
+                url: host + '/api/GroupStudents/' + id,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': "Bearer " + CONSTANT_USER.token
+                },
+                //data:
+            })
+        },
         createAbsence: function (begin, end, reason) {
             return  $http({
                 method: 'POST',

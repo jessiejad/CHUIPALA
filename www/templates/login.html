@@ -8,15 +8,19 @@
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content has-header="true" scroll="true" style="position: fixed;">
-        <form ng-submit="login(email, password)">
+        <form name="loginForm" ng-submit="login(email, password)">
             <div class="list">
                 <label class="item item-input item-floating-label">
                     <span class="input-label">{{ 'UserName' | translate }}</span>
-                    <input type="email" id="email" placeholder="{{ 'UserName' | translate }}" ng-model="email">
+                    <input
+                            name="email" type="email" id="email" placeholder="{{ 'UserName' | translate }}"
+                            ng-model="email" maxlength="25" required>
                 </label>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">{{ 'Password' | translate }}</span>
-                    <input type="password" id="password" placeholder="{{ 'Password' | translate }}" ng-model="password">
+                    <input
+                            name="password" type="password" id="password" placeholder="{{ 'Password' | translate }}"
+                            ng-model="password" required>
                 </label>
                 <!--li class="item item-checkbox">
                     <label class="checkbox">
@@ -25,10 +29,16 @@
                     Remember Me !
                 </li-->
             </div>
+
+            <div style="color: #ef473a; text-align: center">
+                <p ng-show="loginForm.email.$error.email">{{ 'ValidationError_Email' | translate }}</p>
+                <p ng-show="loginForm.email.$error.maxlength">{{ 'ValidationError_MaxLength25' | translate }}</p>
+            </div>
+
             <div ng-if="loginErrors" style="color: #ef473a; text-align: center">
-                <div ng-if="loginErrors.wrong">Les informations entrées sont incorrectes</div>
-                <div ng-if="loginErrors.connexion">Vous êtes actuellement hors connexion</div>
-                <div ng-if="loginErrors.server">Un problème est survenue lors de la communication avec le serveur</div>
+                <div ng-if="loginErrors.wrong">{{ 'LoginError_Wrong' | translate }}</div>
+                <div ng-if="loginErrors.connexion">{{ 'LoginError_Connexion' | translate }}</div>
+                <div ng-if="loginErrors.server">{{ 'LoginError_Server' | translate }}</div>
             </div>
             <div class="padding">
                 <button class="button button-block button-positive">

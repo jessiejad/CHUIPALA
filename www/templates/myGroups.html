@@ -1,0 +1,24 @@
+<ion-view title="{{ 'MyGroups' | translate }}">
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+            </button>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="list">
+            <div class="item item-text-wrap" ng-repeat="group in groups" ui-sref="app.group({ id : group.GroupID })">
+                <h2 style="font-size:110%; text-align:center;">{{group.Name}}</h2>
+                <div style="text-align: center">
+                    {{group.NbStudents}}
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

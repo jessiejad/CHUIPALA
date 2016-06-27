@@ -41,11 +41,14 @@
                 <ion-item menu-close ui-sref="app.myDelays">
                     {{ 'MyDelays' | translate }}
                 </ion-item>
-                <ion-item menu-close ng-click="logout()">
-                    {{ 'LogoutTitle' | translate }}
+                <ion-item ng-if="!isProfessor" menu-close ui-sref="app.myGroups">
+                    {{ 'MyGroups' | translate }}
                 </ion-item>
                 <ion-item menu-close ui-sref="app.settings">
                     {{ 'Settings' | translate }}
+                </ion-item>
+                <ion-item menu-close ng-click="logout()">
+                    {{ 'LogoutTitle' | translate }}
                 </ion-item>
             </ion-list>
         </ion-content>

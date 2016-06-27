@@ -37,7 +37,7 @@
                                 {{class.ProfessorFullName}}
                                 <span style="color: #33cd5f" ng-if="!(class.IsProfessorAbsent) && !(class.IsProfessorLate)"> {{ 'OnTime' | translate }}</span>
                                 <span style="color: #ef473a" ng-if="class.IsProfessorAbsent"> {{ 'Absent' | translate }}</span>
-                                <span style="color: #ffc900" ng-if="!(class.IsProfessorAbsent) && class.IsProfessorLate"> {{ 'Late' | translate }}</span>
+                                <span style="color: #ffc900" ng-if="!(class.IsProfessorAbsent) && class.IsProfessorLate"> {{ 'Late' | translate }} ({{class.ProfessorDelayValue}})</span>
                             </p>
                             <!--p style="color: #ef473a" ng-if="(IsUserProfessor) && class.IsProfessorAbsent">{{ 'AbsentFromMyClass' | translate }}</p>
                             <p style="color: #ffc900" ng-if="(IsUserProfessor) && class.IsProfessorLate">{{ 'LateForMyClass' | translate }}</p-->

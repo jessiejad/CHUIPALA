@@ -53,6 +53,7 @@ appChuipala.run(function($ionicPickerI18n, $rootScope, $state, CONSTANT_USER) {
                 $state.go('app.login');
             }
         }
+        console.log(event, next, nextParams, fromState);
     });
 });
 
@@ -69,7 +70,7 @@ var translations = {
       Back : "Retour",
       LoginTitle : "Connexion",
       Login : "Se connecter",
-      UserName : "Nom d'utilisateur",
+      UserName : "Email",
       Password : "Mot de passe",
       LogoutTitle : "Déconnexion",
       Settings : "Paramètres",
@@ -99,7 +100,14 @@ var translations = {
       ArrivalDate : "Heure d'arrivée",
       DelayReasonExample : "Train, Métro, Réveil...",
       SearchForStudents : "Rechercher un étudiant",
-      LanguageTitle : "Langue"
+      LanguageTitle : "Langue",
+      LoginError_Wrong : "Les informations entrées sont incorrectes",
+      LoginError_Connexion : "Vous êtes actuellement hors connexion",
+      LoginError_Server : "Un problème est survenue lors de la communication avec le serveur",
+      ValidationError_Required : "Tous les champs sont requis",
+      ValidationError_MaxLength25 : "Email ne peut faire plus de 25 caractères",
+      ValidationError_Email : "Email doit être une adresse de messagerie valide",
+      MyGroups : "Mes groupes"
   }
   ,
   "en": {
@@ -113,7 +121,7 @@ var translations = {
       Back : "Back",
       LoginTitle : "Log In",
       Login : "Log in",
-      UserName : "Username",
+      UserName : "Email",
       Password : "Password",
       LogoutTitle : "Log Out",
       Settings : "Settings",
@@ -143,7 +151,14 @@ var translations = {
       ArrivalDate : "Arrival at",
       DelayReasonExample : "Train, Subway, Alarm clock...",
       SearchForStudents : "Find a student",
-      LanguageTitle : "Language"
+      LanguageTitle : "Language",
+      LoginError_Wrong : "Wrong Email/Password combination",
+      LoginError_Connexion : "No connexion",
+      LoginError_Server : "An error occured in the communication with the server",
+      ValidationError_Required : "All fields are required",
+      ValidationError_MaxLength25 : "Email can be at most 25 characters long",
+      ValidationError_Email : "Email must be a valid email address",
+      MyGroups : "My groups"
   }
 }
 
@@ -164,7 +179,7 @@ appChuipala.config(function($stateProvider, $urlRouterProvider, $translateProvid
           url: "/app",
           abstract: true,
           templateUrl: "templates/navbar.html",
-          controller: 'LanguageCtrl'
+          controller: "LoginCtrl"
       })
 
       .state('app.login', {
@@ -217,6 +232,16 @@ appChuipala.config(function($stateProvider, $urlRouterProvider, $translateProvid
           },
       })
 
+      .state('app.myGroups', {
+          url: "/myGroups",
+          views: {
+              'menuContent': {
+                  templateUrl: "templates/myGroups.html",
+                  controller: "MyGroupsCtrl"
+              }
+          },
+      })
+
       .state('app.absence', {
           url: "/absence/:id",
           views: {
@@ -233,6 +258,16 @@ appChuipala.config(function($stateProvider, $urlRouterProvider, $translateProvid
               'menuContent': {
                   templateUrl: "templates/delay.html",
                   controller: "DelayCtrl"
+              }
+          },
+      })
+
+      .state('app.group', {
+          url: "/group/:id",
+          views: {
+              'menuContent': {
+                  templateUrl: "templates/group.html",
+                  controller: "GroupCtrl"
               }
           },
       })

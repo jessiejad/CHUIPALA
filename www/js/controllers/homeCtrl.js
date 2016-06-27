@@ -174,11 +174,6 @@ appChuipala.controller('MyDelaysCtrl', function($scope, apiFactory, CONSTANT_USE
         }).then(function(modal) {
             $scope.modal = modal;
             $scope.modal.show();
-            $state.transitionTo($state.current, $stateParams, {
-                reload: true,
-                inherit: false,
-                notify: true
-            });
         });
     }
 
@@ -190,8 +185,20 @@ appChuipala.controller('MyDelaysCtrl', function($scope, apiFactory, CONSTANT_USE
         });
         $scope.modal.hide();
         $scope.modal.remove();
+        $state.transitionTo($state.current, $stateParams, {
+            reload: true,
+            inherit: false,
+            notify: true
+        });
         //$state.go($state.current, {}, {reload: true});
     }
+})
+
+appChuipala.controller('MyGroupsCtrl', function($scope, apiFactory, CONSTANT_USER, $ionicModal, $state, $stateParams) {
+    apiFactory.getMyGroups().then(function (result) {
+        console.log(result);
+        $scope.groups = result.data;
+    })
 })
 
 appChuipala.controller('AbsenceCtrl', function($scope, apiFactory, $stateParams) {
@@ -204,6 +211,13 @@ appChuipala.controller('AbsenceCtrl', function($scope, apiFactory, $stateParams)
 appChuipala.controller('DelayCtrl', function($scope, apiFactory, $stateParams) {
     apiFactory.getDelayInfo($stateParams.id).then(function(result) {
         $scope.delay = result.data;
+    })
+});
+
+appChuipala.controller('GroupCtrl', function($scope, apiFactory, $stateParams) {
+    apiFactory.getGroupInfo($stateParams.id).then(function(result) {
+        console.log(result);
+        $scope.group = result.data;
     })
 });
 
