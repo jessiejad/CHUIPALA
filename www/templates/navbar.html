@@ -1,4 +1,4 @@
-<ion-side-menus enable-menu-with-back-views="false">
+<ion-side-menus enable-menu-with-back-views="true">
     <ion-side-menu-content>
         <ion-nav-bar class="bar-stable" align-title="center">
             <ion-nav-back-button>
@@ -25,27 +25,27 @@
         <ion-header-bar class="bar-stable">
             <h1 class="title">
                 {{userFullName}},
-                <span ng-if="isProfessor">professeur</span>
-                <span ng-if="!isProfessor">étudiant(e)</span>
+                <span ng-if="isProfessor">{{ 'Professor_MF' | translate }}</span>
+                <span ng-if="!isProfessor">{{ 'Student_MF' | translate }}</span>
             </h1>
 
         </ion-header-bar>
         <ion-content>
             <ion-list>
                 <ion-item menu-close ui-sref="app.home">
-                    Mes cours
+                    {{ 'MyClasses' | translate }}
                 </ion-item>
                 <ion-item menu-close ui-sref="app.myAbsences">
-                    Mes absences
+                    {{ 'MyAbsences' | translate }}
                 </ion-item>
                 <ion-item menu-close ui-sref="app.myDelays">
-                    Mes retards
+                    {{ 'MyDelays' | translate }}
                 </ion-item>
                 <ion-item menu-close ng-click="logout()">
-                    Déconnexion
+                    {{ 'LogoutTitle' | translate }}
                 </ion-item>
                 <ion-item menu-close ui-sref="app.settings">
-                    Paramètres
+                    {{ 'Settings' | translate }}
                 </ion-item>
             </ion-list>
         </ion-content>

@@ -1,4 +1,4 @@
-<ion-view title="Mes Absences">
+<ion-view title="{{ 'MyAbsences' | translate }}">
     <ion-nav-bar class="bar-assertive" align-title="center">
         <ion-nav-back-button>
         </ion-nav-back-button>
@@ -12,18 +12,18 @@
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content>
-        <ion-list>
-            <ion-item class="item-text-wrap" ng-repeat="absence in absences" ui-sref="app.absence({ id : absence.EventID })">
+        <div class="list">
+            <div class="item item-text-wrap" ng-repeat="absence in absences" ui-sref="app.absence({ id : absence.EventID })">
                 <h2 style="font-size:110%; text-align:center;">{{absence.Reason}}</h2>
                 <div class="item-text-wrap row">
                     <div class="col col-50" style="text-align: left; font-size:80%">
-                        <span class="subdued">Du {{absence.StartDate}}</span>
+                        <span class="subdued">{{ 'From' | translate }} {{absence.StartDate}}</span>
                     </div>
-                    <div class="col col-50" style="text-align: right; font-size:80%">
-                        <span class="subdued">Au {{absence.StopDate}}</span>
+                    <div class="col col-50" style="clear: right; text-align: right; font-size:80%">
+                        <span class="subdued">{{ 'To' | translate }} {{absence.StopDate}}</span>
                     </div>
                 </div>
-            </ion-item>
-        </ion-list>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

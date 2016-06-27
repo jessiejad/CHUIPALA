@@ -1,7 +1,7 @@
-<ion-view title="Mon retard">
+<ion-view title="{{ 'MyDelay' | translate }}">
     <ion-nav-bar class="bar-energized" align-title="center">
         <ion-nav-back-button class="button-clear">
-            <i class="ion-arrow-left-c"></i> Retour
+            <i class="ion-arrow-left-c"></i> {{ 'Back' | translate }}
         </ion-nav-back-button>
     </ion-nav-bar>
     <ion-content>
@@ -10,7 +10,7 @@
                 <h2 style="font-size:130%; text-align:center; color:white">{{delay.Reason}}</h2>
                 <div class="item-text-wrap row">
                     <div class="col col-50" style="text-align: left; font-size:80%">
-                        <span style="color:white" class="subdued">Le {{delay.ConcernedDate}}</span>
+                        <span style="color:white" class="subdued">{{ 'The' | translate }} {{delay.ConcernedDate}}</span>
                     </div>
                     <div class="col col-50" style="text-align: right; font-size:80%">
                         <span style="color:white; font-weight: bold" class="subdued">{{delay.Value}}{{delay.ValueUnit}}</span>
@@ -29,18 +29,18 @@
 
                 <div class="item-text-wrap row">
                     <div class="col col-50" style="text-align: left; font-size:80%">
-                        <span class="subdued">Du {{delay.ConcernedClass.StartDate}}</span>
+                        <span class="subdued">{{ 'From' | translate }} {{delay.ConcernedClass.StartDate}}</span>
                     </div>
                     <div class="col col-50" style="text-align: right; font-size:80%">
-                        <span class="subdued">Au {{delay.ConcernedClass.EndDate}}</span>
+                        <span class="subdued">{{ 'To' | translate }} {{delay.ConcernedClass.EndDate}}</span>
                     </div>
                 </div>
                 <div class="item-text-wrap row">
                     <div class="col col-50" style="text-align: left; font-size:80%">
-                        <span class="subdued">À {{delay.ConcernedClass.StartTime}}</span>
+                        <span class="subdued">{{ 'At' | translate }} {{delay.ConcernedClass.StartTime}}</span>
                     </div>
                     <div class="col col-50" style="text-align: right; font-size:80%">
-                        <span class="subdued">À {{delay.ConcernedClass.EndTime}}</span>
+                        <span class="subdued">{{ 'At' | translate }} {{delay.ConcernedClass.EndTime}}</span>
                     </div>
                 </div>
             </ion-item>

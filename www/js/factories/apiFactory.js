@@ -1,9 +1,10 @@
 /**
  * Created by Jessie on 15/06/2016.
+ * @author Jessie Jadas
  */
 appChuipala.factory('apiFactory', function($http, CONSTANT_USER) {
-    //var host = "http://localhost:52164";
-    var host = "http://chuipala-ws.azurewebsites.net";
+    var host = "http://localhost:52164";
+    //var host = "http://chuipala-ws.azurewebsites.net";
     return {
         /**
          * Asks for authentication

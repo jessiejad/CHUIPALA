@@ -1,15 +1,21 @@
 /**
  * Created by Jessie on 03/06/2016.
- * @author Jessie
+ * @author Jessie Jadas
  */
+appChuipala.controller('LogoutCtrl', function(CONSTANT_USER, $state) {
+    CONSTANT_USER.isConnected = false;
+    $state.go('app.login');
+});
 
-appChuipala.controller('HomeCtrl', function($scope, apiFactory, CONSTANT_USER, $ionicModal, CONSTANT_USER, $state, $rootScope) {
-    if(!CONSTANT_USER.isConnected) {
-        $state.go('app.login');
-        return;
-    }
+appChuipala.controller('HomeCtrl', function($timeout, $ionicHistory, $stateParams, $scope, apiFactory, CONSTANT_USER, $ionicModal, CONSTANT_USER, $state, $rootScope) {
     $rootScope.logout = function() {
         CONSTANT_USER.isConnected = false;
+        //$timeout(function () {
+            localStorage.clear();
+            $ionicHistory.clearCache();
+            $ionicHistory.clearHistory();
+        //}, 500)
+        //window.location.reload();
         $state.go('app.login');
         return;
     }
@@ -86,7 +92,11 @@ appChuipala.controller('HomeCtrl', function($scope, apiFactory, CONSTANT_USER, $
         });
         $scope.modal.hide();
         $scope.modal.remove();
-        //$state.go($state.current, {}, {reload: true});
+        $state.transitionTo($state.current, $stateParams, {
+            reload: true,
+            inherit: false,
+            notify: true
+        });
     }
 
     $scope.addAbsences = function(dateDeb, dateFin, motif){
@@ -96,6 +106,11 @@ appChuipala.controller('HomeCtrl', function($scope, apiFactory, CONSTANT_USER, $
         });
         $scope.modal.hide();
         $scope.modal.remove();
+        $state.transitionTo($state.current, $stateParams, {
+            reload: true,
+            inherit: false,
+            notify: true
+        });
     }
 })
 
@@ -117,7 +132,7 @@ appChuipala.filter('searchContacts', function(){
   };
 });
 
-appChuipala.controller('MyAbsencesCtrl', function($scope, apiFactory, CONSTANT_USER, $ionicModal) {
+appChuipala.controller('MyAbsencesCtrl', function($scope, apiFactory, CONSTANT_USER, $ionicModal, $state, $stateParams) {
     
     apiFactory.getMyAbsences().then(function (result) {
         $scope.absences = result.data;
@@ -139,10 +154,15 @@ appChuipala.controller('MyAbsencesCtrl', function($scope, apiFactory, CONSTANT_U
         });
         $scope.modal.hide();
         $scope.modal.remove();
+        $state.transitionTo($state.current, $stateParams, {
+            reload: true,
+            inherit: false,
+            notify: true
+        });
     }
 })
 
-appChuipala.controller('MyDelaysCtrl', function($scope, apiFactory, CONSTANT_USER, $ionicModal) {
+appChuipala.controller('MyDelaysCtrl', function($scope, apiFactory, CONSTANT_USER, $ionicModal, $state, $stateParams) {
     apiFactory.getMyDelays().then(function (result) {
         $scope.delays = result.data;
     })
@@ -154,6 +174,11 @@ appChuipala.controller('MyDelaysCtrl', function($scope, apiFactory, CONSTANT_USE
         }).then(function(modal) {
             $scope.modal = modal;
             $scope.modal.show();
+            $state.transitionTo($state.current, $stateParams, {
+                reload: true,
+                inherit: false,
+                notify: true
+            });
         });
     }
 
@@ -199,12 +224,55 @@ appChuipala.controller('LoginCtrl', function($scope, apiFactory, $stateParams, C
                 console.log(CONSTANT_USER);
                 $state.go('app.home');
             })
-            .error(function(result) {
-                $state.go('app.login');
-            })
+            .error(function (data, status) {
+                console.log(data, status);
+                if (data == null) {
+                    $scope.loginErrors = {
+                        "connexion": true
+                    }
+                }
+                else if (data.error == "invalid_grant") {
+                    $scope.loginErrors = {
+                        "wrong": true
+                    }
+                } else {
+                    $scope.loginErrors = {
+                        "server": true
+                    }
+                }
+            });
     }
 });
 
-appChuipala.controller('SettingsCtrl', function($scope, LANGUAGES) {
+appChuipala.controller('SettingsCtrl', function($scope, $translate, V_LANGUAGE, $ionicLoading, $state, $ionicHistory, LANGUAGES, $stateParams) {
     $scope.languages = LANGUAGES;
+    $scope.currentLanguage = V_LANGUAGE.language;
+
+    $scope.ChangeLanguage = function(language){
+        console.log("changing language");
+        console.log(language);
+
+        if(language != V_LANGUAGE.language){
+            $ionicLoading.show({
+                template: V_LANGUAGE.language.toUpperCase() + " -> " + language.toUpperCase()
+            });
+
+            console.log(V_LANGUAGE);
+            V_LANGUAGE.language = language;
+
+            $translate.use(language).then(function(data){
+                console.log("SUCCESS -> " + data);
+                setTimeout(function () {
+                    $scope.$apply(function () {
+                        $ionicLoading.hide();
+                        $state.go($ionicHistory.currentStateName(), $stateParams, {reload: true});
+                    });
+                }, 1000);
+            }, function(error) {
+                console.log("ERROR -> " + error);
+            });
+        }else{
+            // Chosen language is already applied
+        }
+    }
 });
